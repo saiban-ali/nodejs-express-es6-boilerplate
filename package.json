@@ -1,0 +1,43 @@
+{
+  "name": "nodejs-express-es6-boilerplate",
+  "version": "1.0.0",
+  "description": "NodeJS Express ES6 Boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist",
+    "build": "npm run clean && npm run transpile",
+    "dev": "cross-env NODE_ENV=development && npm run build && npm run start",
+    "prod": "cross-env NODE_ENV=production && npm run build && npm run start",
+    "transpile": "babel ./server --out-dir dist",
+    "clean": "rimraf dist",
+    "watch:dev": "nodemon --exec npm run dev",
+    "watch:prod": "nodemon --exec npm run prod"
+  },
+  "author": "Saiban Ali",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "cross-env": "^7.0.2",
+    "dotenv-flow": "^3.2.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "rimraf": "^3.0.2"
+  },
+  "devDependencies": {
+    "debug": "^4.2.0",
+    "nodemon": "^2.0.5"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "server/*",
+      "public/*"
+    ],
+    "ignore": [
+      "**/__tests__/**",
+      "*.test.js",
+      "*.spec.js"
+    ]
+  }
+}
